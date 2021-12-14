@@ -1,0 +1,51 @@
+html{
+ position: relative;
+ font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    margin: 0;
+    padding: 0;
+
+}
+#navbar{
+    position: relative;
+    background-color: rgb(43, 214, 120);
+    top: -20px;
+    height: 100px;
+}
+#navbar h2{
+    color:white;
+    font-size:45px;
+    margin-top: 30px;
+}
+#main{
+    background-color: rgb(92, 138, 160);
+    border-radius: 30px;
+    height: 300px;
+    width: 600px;
+    transform: translate(60% , 160px);
+}
+#main-context{
+    padding-top: 40px;
+    line-height: 50px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+#main-context button{
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 13px;
+}
+#main-context input{
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    height: 30px;
+    width: 200px;
+    margin-left: 13px;
+    font-size: 15px;
+}
