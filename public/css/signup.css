@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Twinkle+Star&display=swap');
+html{
+    width: 100%;
+    height: 870px;
+}
 #nav{
     top: 0; left: 0;
     position: fixed;
@@ -23,7 +27,7 @@
 #nav li a{
     text-decoration: none;
     color: rgb(51, 55, 56);
-    font-size: 25px;
+    font-size: 23px;
     padding: 10px;
     margin-right: 40px;
     margin-top: 40px;
@@ -40,8 +44,31 @@
     transition:ease-in-out
 }
 #main{
-    margin:0;
     padding:0;
+    margin-top: 100px;
+    margin-left: 0px;
     width: 100%;
-    height: 800px;
+    height: 650px;
+}
+#footer{
+position: absolute;
+width: 100%;
+height: 120px;
+left: -2px;
+top:750px;
+background: #312F31;
+bottom: 0;
+}
+#footer #foot_title{
+    position: absolute;
+    width: 576px;
+    height: 88px;
+    left: 30px;
+    top: 918px;
+    font-family: "Pacifico" , cursive;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 50px;
+    line-height: 88px;
+    color: #FFFFFF;
 }
