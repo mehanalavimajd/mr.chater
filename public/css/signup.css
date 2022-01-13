@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Twinkle+Star&display=swap');
-html{
+body{
+    height: 100%;
     width: 100%;
-    height: 870px;
+
 }
 #nav{
     top: 0; left: 0;
@@ -51,13 +52,14 @@ html{
     height: 650px;
 }
 #footer{
-position: absolute;
-width: 100%;
-height: 120px;
-left: -2px;
-top:750px;
-background: #312F31;
-bottom: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    height: 100px;
+    background: #312F31;
 }
 #footer #foot_title{
     position: absolute;
