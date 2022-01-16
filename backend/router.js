@@ -11,7 +11,7 @@ app.get("/signup", (req, res) => {
     // render the html file
     res.sendFile(dirname + "/html/signup/signup.html");
 });
-// listen on port 3000
-app.listen(3000, () => {
-    console.log("Server started on port 3000");
+// listen on port 8080
+app.listen(8080, () => {
+    console.log("Server started on port 8080");
 });
