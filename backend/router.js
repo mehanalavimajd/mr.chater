@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const mysql = require("mysql");
 const session = require("express-session");
+app.set("view-engine", "ejs");
 app.use(session({
 	secret: 'secret',
 	resave: true,
@@ -54,12 +55,51 @@ app.post("/signup", (req, res) => {
         throw err;
       } else {
         console.log("1 record inserted");
+        req.session.user = name
+        req.session.pass = pass
+        res.redirect("/");
       }
     }
   );
 });
-
-// listen on port 8080
-app.listen(8080, () => {
-  console.log("Server started on port 8080");
+app.get("/login",(req,res)=>{
+  res.render(dirname+"/html/login.ejs",{error:false})
+})
+app.post("/login",(req,res)=>{
+    // get the form
+    let form = req.body;
+    let pass = form.password;
+    let name = form.username;
+    // create users table if it doesn't exist
+    con.query(
+      "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255), password VARCHAR(255))",
+      function (err, result) {
+        if (err) throw err;
+      }
+    );
+    // checking if name and pass are in the database
+    con.query(
+      "SELECT * FROM users WHERE username = '" + name + "' AND password = '" + pass + "'",
+      function (err, result) {
+        if (err) throw err;
+        if (result.length > 0) {
+          req.session.user = name
+          req.session.pass = pass
+          res.redirect("/");
+        } else {
+          res.render(dirname+"/html/login.ejs",{error:true})
+       
+        }
+      }
+    );
+})
+app.get("/",(req,res)=>{
+  res.render(dirname+"/html/index.ejs",{
+    user:req.session.user?req.session.user:null,
+    pass:req.session.pass?req.session.pass:null
+    });
+})
+// listen on port 3001
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
 });

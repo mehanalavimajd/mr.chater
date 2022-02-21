@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>login</title>
+  <link rel="stylesheet" href="css/signup.css">
+</head>
+<body>
+  <nav id="nav">
+    <h1 id="logo">MR.Chater</h1>
+    <ul>
+      <li><a href="/signup">Signup</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </nav>
+  <% if(error === true){ %>
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Error: Username or Password is incorrect
+  </div> 
+  <% } %>
+  <div id="main">
+    <div id="signup">
+      <form id="signupForm" method="post" action="/signup">
+        <input placeholder="Enter your Username" name="username" id="user" type="text">
+        <input placeholder="Enter your Password" name="password" id="pass" type="password">
+        <button id="sumbit" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <footer id="footer">
+    <h2 id="foot_title">
+      A  Fast , Lovely messanger
+    </h2>
+    <li>
+      <ul>
+        <a href="/about">About Us</a>
+      </ul>
+      <ul>
+        <a href="/contact">Contact Us</a>
+      </ul>
+    </li>
+  </footer>
+</body>
+<script src="js/particles.js"></script>
+<script src="js/signup.js"></script>
+</html>
