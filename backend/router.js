@@ -15,6 +15,7 @@ const con = mysql.createConnection({
   password: "password", // really secure XD
   database: "project",
 });
+let LoginError=false;
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
@@ -63,7 +64,7 @@ app.post("/signup", (req, res) => {
   );
 });
 app.get("/login",(req,res)=>{
-  res.render(dirname+"/html/login.ejs",{error:false})
+  res.render(dirname+"/html/login.ejs",{error:LoginError})
 })
 app.post("/login",(req,res)=>{
     // get the form
@@ -86,9 +87,10 @@ app.post("/login",(req,res)=>{
           req.session.user = name
           req.session.pass = pass
           res.redirect("/");
+          console.log(result)
         } else {
-          res.render(dirname+"/html/login.ejs",{error:true})
-       
+          LoginError=true;
+          res.redirect("/login");
         }
       }
     );
