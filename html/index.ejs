@@ -10,7 +10,11 @@
     <% if (user === null) {%>
     <b>You aren't logged in. please <a href="/login">login</a></b>
     <% }else{ %>
-        
+            <div id="input-box">
+                <label>Room name to join:</label>
+                <input type="text" id="room-name" placeholder="Room name">
+                <button id="join-room">Join</button>
+            </div>
     <% } %>
 </body>
 </html>
