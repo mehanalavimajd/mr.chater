@@ -15,7 +15,7 @@ const con = mysql.createConnection({
   password: "password", // really secure XD
   database: "project",
 });
-let LoginError=false;
+let LoginError,SignupError=false;
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
@@ -30,7 +30,7 @@ app.use(express.static(dirname + "/public"));
 // gets / and render "../html/signup.html"
 app.get("/signup", (req, res) => {
   // render the html file
-  res.sendFile(dirname + "/html/signup.html");
+  res.render(dirname + "/html/signup.ejs",{error:SignupError});
 });
 app.post("/signup", (req, res) => {
   // get the form
@@ -39,12 +39,13 @@ app.post("/signup", (req, res) => {
   let name = form.username;
   // create users table if it doesn't exist
   con.query(
-    "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255), password VARCHAR(255))",
+    "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) NOT NULL , password VARCHAR(255) NOT NULL , UNIQUE (username))",
     function (err, result) {
       if (err) throw err;
     }
   );
-  // adding name and pass to the database (Not throwing error for non-unique username)
+  // adding name and pass to the database if it was unique
+
   con.query(
     "INSERT INTO users (username, password) VALUES ('" +
       name +
@@ -59,6 +60,10 @@ app.post("/signup", (req, res) => {
         req.session.user = name
         req.session.pass = pass
         res.redirect("/");
+        if (result.length){
+          SignupError=false;
+          res.redirect("/signup")
+        }
       }
     }
   );
@@ -73,7 +78,7 @@ app.post("/login",(req,res)=>{
     let name = form.username;
     // create users table if it doesn't exist
     con.query(
-      "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255), password VARCHAR(255))",
+      "CREATE TABLE IF NOT EXISTS users ( username VARCHAR(255) NOT NULL , password VARCHAR(255) NOT NULL , UNIQUE (username))",
       function (err, result) {
         if (err) throw err;
       }

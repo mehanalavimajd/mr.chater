@@ -5,16 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr.chater</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <% if (user === null) {%>
     <b>You aren't logged in. please <a href="/login">login</a></b>
     <% }else{ %>
             <div id="input-box">
-                <label>Room name to join:</label>
-                <input type="text" id="room-name" placeholder="Room name">
+                <label id="roomlabel">Room name to join:</label>
+                <input type="text" name="roomname" id="room-name" placeholder="Room name">
                 <button id="join-room">Join</button>
             </div>
     <% } %>
 </body>
+<script src="js/particles.js"></script>
+<script src="js/signup.js"></script>
 </html>

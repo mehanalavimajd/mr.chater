@@ -15,6 +15,12 @@
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
+  <% if(error === true){ %>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      Error: Username or Password is incorrect
+    </div> 
+  <% } %>
   <div id="main">
     <div id="signup">
       <form id="signupForm" method="post" action="/signup">
