@@ -11,11 +11,11 @@
     <% if (user === null) {%>
     <b>You aren't logged in. please <a href="/login">login</a></b>
     <% }else{ %>
-            <div id="input-box">
+            <form id="input-box" action="post" method="/room">
                 <label id="roomlabel">Room name to join:</label>
                 <input type="text" name="roomname" id="room-name" placeholder="Room name">
-                <button id="join-room">Join</button>
-            </div>
+                <button id="joinbtn">Join</button>
+            </form>
     <% } %>
 </body>
 <script src="js/particles.js"></script>

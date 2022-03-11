@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const mysql = require("mysql");
 const session = require("express-session");
+const compression = require('compression');
+app.use(compression()); //use compression 
 app.set("view-engine", "ejs");
 app.use(session({
 	secret: 'secret',
@@ -15,22 +17,22 @@ const con = mysql.createConnection({
   password: "password", // really secure XD
   database: "project",
 });
-let LoginError,SignupError=false;
+let LoginError=false;
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
 app.use(bodyParser.urlencoded({ extended: true }));
 let dirname;
-// code to get the current directory and delete /backend at end from it
-dirname = __dirname.substring(0, __dirname.length - 7);
+// code to get the current directory and delete /routes at end from it
+dirname = __dirname.substring(0, __dirname.length - 6);
 // css in express to get /public css
 app.use(express.static(dirname + "/public"));
 
 // gets / and render "../html/signup.html"
 app.get("/signup", (req, res) => {
   // render the html file
-  res.render(dirname + "/html/signup.ejs",{error:SignupError});
+  res.render(dirname + "/views/signup.ejs");
 });
 app.post("/signup", (req, res) => {
   // get the form
@@ -59,9 +61,8 @@ app.post("/signup", (req, res) => {
         console.log("1 record inserted");
         req.session.user = name
         req.session.pass = pass
-        res.redirect("/");
-        if (result.length){
-          SignupError=false;
+        res.redirect("/room");
+        if (result.length == 0){
           res.redirect("/signup")
         }
       }
@@ -69,7 +70,7 @@ app.post("/signup", (req, res) => {
   );
 });
 app.get("/login",(req,res)=>{
-  res.render(dirname+"/html/login.ejs",{error:LoginError})
+  res.render(dirname+"/views/login.ejs",{error:LoginError})
 })
 app.post("/login",(req,res)=>{
     // get the form
@@ -91,8 +92,7 @@ app.post("/login",(req,res)=>{
         if (result.length > 0) {
           req.session.user = name
           req.session.pass = pass
-          res.redirect("/");
-          console.log(result)
+          res.redirect("/room");
         } else {
           LoginError=true;
           res.redirect("/login");
@@ -100,13 +100,13 @@ app.post("/login",(req,res)=>{
       }
     );
 })
-app.get("/",(req,res)=>{
-  res.render(dirname+"/html/index.ejs",{
+app.get("/room",(req,res)=>{
+  res.render(dirname+"/views/room.ejs",{
     user:req.session.user?req.session.user:null,
     pass:req.session.pass?req.session.pass:null
     });
 })
-// listen on port 3001
+// listen on port 3000
 app.listen(3000, () => {
   console.log("Server started on port 3000");
 });

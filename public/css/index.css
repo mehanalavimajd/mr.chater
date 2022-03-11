@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 body{
     height: 100%;
     width: 100%;
@@ -20,6 +21,7 @@ body{
     left: 370px;
     border-radius: 70px;
     border:solid 2px black;
+    font-family:Arial, Helvetica, sans-serif;
 }
 input{
     width: 300px;
@@ -31,8 +33,16 @@ input{
 }
 #roomlabel{
     font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Pacifico', cursive;
     margin-left: 30px;
     margin-top: 100px;
-
+}
+#joinbtn{
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 30px;
+    border:solid 1px black;
+    background-color: rgb(255, 255, 255);
 }

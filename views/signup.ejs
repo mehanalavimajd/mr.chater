@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>login</title>
+  <title>Signup</title>
   <link rel="stylesheet" href="css/signup.css">
 </head>
 <body>
@@ -15,15 +15,9 @@
       <li><a href="/login">Login</a></li>
     </ul>
   </nav>
-  <% if(error === true){ %>
-  <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-    Error: Username or Password is incorrect
-  </div> 
-  <% } %>
   <div id="main">
     <div id="signup">
-      <form id="signupForm" method="post" action="/login">
+      <form id="signupForm" method="post" action="/signup">
         <input placeholder="Enter your Username" name="username" id="user" type="text">
         <input placeholder="Enter your Password" name="password" id="pass" type="password">
         <button id="sumbit" type="submit">Submit</button>
@@ -44,6 +38,6 @@
     </li>
   </footer>
 </body>
-<script src="js/particles.js"></script>
+<script src="js/particles.min.js"></script>
 <script src="js/signup.js"></script>
 </html>
