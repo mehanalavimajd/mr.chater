@@ -11,9 +11,9 @@
     <% if (user === null) {%>
     <b>You aren't logged in. please <a href="/login">login</a></b>
     <% }else{ %>
-            <form id="input-box" action="post" method="/room">
+            <form id="input-box" action="/room" method="post">
                 <label id="roomlabel">Room name to join:</label>
-                <input type="text" name="roomname" id="room-name" placeholder="Room name">
+                <input type="text" name="roomname" id="roomname" placeholder="Room name">
                 <button id="joinbtn">Join</button>
             </form>
     <% } %>
