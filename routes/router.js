@@ -8,9 +8,7 @@ const io = new Server(server);
 const mysql = require("mysql");
 const session = require("express-session");
 const compression = require('compression');
-io.on('connection', (socket) => {
-  console.log('a user connected');
-});
+let UserData={};
 app.use(compression()); //use compression 
 app.set("view-engine", "ejs");
 app.use(session({
@@ -114,13 +112,21 @@ app.get("/room",(req,res)=>{
     });
 })
 app.post("/room",(req,res)=>{
-  let Room = req.body.roomname
-  req.session.room=Room
+  req.session.room=req.body.roomname
   res.redirect("/")
+  UserData={
+    room:req.session.room,
+    user:req.session.user
+  }
 })
 app.get("/",(req,res)=>{
   res.render(dirname+"/views/index.ejs",{room:req.session.room,user:req.session.user})
 })
+// chatting :
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.join(UserData.room)
+});
 // listen on port 3000
 server.listen(3000,"localhost",()=>{
   console.log("listening on port 3000");

@@ -8,7 +8,27 @@
 
 </head>
 <body>
-    <h1>Room <%= room %></h1>
+    <nav>
+          <h1>Room <%= room %></h1>
+    </nav>
+    <aside>
+      <h2>Users</h2>
+      <ul>
+        <li></li>
+      </ul>
+    </aside>
+    <section>
+      <h2>Chat</h2>
+      <ul id="chatul">
+        <li></li>
+      </ul>
+    </section>
+    <footer>
+      <form>
+        <input type="text" name="message" placeholder="Type your message here..." id="message">
+        <input type="submit" value="Send" id="send">
+      </form>
+
     <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
