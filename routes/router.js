@@ -126,6 +126,13 @@ app.get("/",(req,res)=>{
 io.on('connection', (socket) => {
   console.log('a user connected');
   socket.join(UserData.room)
+
+  // getting the event
+  socket.on('chat message', (data) => {
+    // sending the data to the room
+    io.to(UserData.room).emit('chat message', data);
+    console.log(data);
+  });
 });
 // listen on port 3000
 server.listen(3000,"localhost",()=>{

@@ -13,7 +13,7 @@
     </nav>
     <aside>
       <h2>Users</h2>
-      <ul>
+      <ul id="userul">
         <li></li>
       </ul>
     </aside>
@@ -32,6 +32,30 @@
     <script src="/socket.io/socket.io.js"></script>
 <script>
   var socket = io();
+  // selecting all the elements
+  var message = document.getElementById('message');
+  var send = document.getElementById('send');
+  var chatul = document.getElementById('chatul');
+  var userul = document.getElementById('userul');
+  // adding the event
+  send.addEventListener('click', (e)=>{
+    // alert('clicked');
+    e.preventDefault()
+    if (message.value){
+      socket.emit('chat message', {
+        message: message.value
+      });
+      message.value = '';
+  }
+    // publishing the message
+
+  });
+  socket.on('chat message', (data)=>{
+    // alert('message received');
+    var li = document.createElement('li');
+    li.innerHTML = data.message;
+    chatul.appendChild(li);
+  });
 </script>
 </body> 
 </html>
