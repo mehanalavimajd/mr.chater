@@ -1,48 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 body{
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: rgb(252, 247, 0);
+    background-color: rgb(158, 158, 158);
 }
-#input-box{
-    width: 100%;
+html {
     height: 100%;
-    background-color: rgb(255, 255, 255);
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
-    padding: 10px;
-    margin-top: 10px;
-    width: 500px;
-    height: 350px;
-    position: absolute;
-    top: 50px;
-    left: 370px;
-    border-radius: 70px;
-    border:solid 2px black;
-    font-family:Arial, Helvetica, sans-serif;
 }
-input{
+.animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+h3{
+    font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: -30px;
+    left: 280px;
+}
+nav{
+    background-color: #ffffff;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    z-index: 1;;
+    top: 0;
+    left:350px;
+}
+aside{
+    background-color: #ffffff;
+    position: relative;
+    top: 0;
+    height: 100%;
     width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    margin-top: 50px;
-    margin-left: 30px;
-    border:solid 1px black;
+    position: fixed;
+    left: 0;
+    
 }
-#roomlabel{
+aside h2{
+    color: #e433c6;
     font-size: 30px;
-    font-family: 'Pacifico', cursive;
-    margin-left: 30px;
-    margin-top: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: 20px;
+    left: 100px;
 }
-#joinbtn{
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    margin-top: 50px;
-    margin-left: 30px;
-    border:solid 1px black;
-    background-color: rgb(255, 255, 255);
+aside ul{
+    list-style-type:disc;
+    position: relative;
+    top: 50px;
+    left: 70px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+aside ul li{
+    color: #000000;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: 20px;
+}
+section{
+    background-color: #ffffff;
+    height: 500%;
+    width:100%;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+section ul{
+    list-style-type:disc;
+    position: relative;
+    top: 30px;
+    left: 10px;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+section h2{
+    color: #ff7b00;
+    font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    top: -10px;
+    left: 400px;
+}
+section form input{
+    position: relative;
+    top: 100%;
+    left: 400px;
 }

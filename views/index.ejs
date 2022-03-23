@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <nav>
-          <h1>Room <%= room %></h1>
-    </nav>
+
+
+  <nav class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="animate-charcter"> In The Room "<%= room %>"</h3>
+      </div>
+    </div>
+  </div>
+  
+  
     <aside>
       <h2>Users</h2>
       <ul id="userul">
@@ -20,14 +28,14 @@
     <section>
       <h2>Chat</h2>
       <ul id="chatul">
-        <li></li>
+        
       </ul>
-    </section>
-    <footer>
       <form>
         <input type="text" name="message" placeholder="Type your message here..." id="message">
         <input type="submit" value="Send" id="send">
       </form>
+    </section>
+
 
     <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -47,15 +55,26 @@
       });
       message.value = '';
   }
-    // publishing the message
-
+    // showing the message
   });
   socket.on('chat message', (data)=>{
     // alert('message received');
     var li = document.createElement('li');
-    li.innerHTML = data.message;
+    li.innerHTML = `${data[1]} : ${data[0].message}`;
     chatul.appendChild(li);
   });
+  socket.on('roomData', (data)=>{
+    // alert('users received');
+    let {users} = data;
+    // listing users
+    userul.innerHTML = '';
+    users.forEach(element => {
+      var li = document.createElement('li');
+      li.innerHTML = element.name;
+      userul.appendChild(li);
+    });
+
+});
 </script>
 </body> 
 </html>

@@ -9,6 +9,12 @@ const mysql = require("mysql");
 const session = require("express-session");
 const compression = require('compression');
 let UserData={};
+let Users=[];
+let UserInRoom=[];
+const getUsersInRoom = room => {
+  console.log(Users.filter(user => user.room === room));
+  return Users.filter(user => user.room === room);
+};
 app.use(compression()); //use compression 
 app.set("view-engine", "ejs");
 app.use(session({
@@ -126,15 +132,27 @@ app.get("/",(req,res)=>{
 io.on('connection', (socket) => {
   console.log('a user connected');
   socket.join(UserData.room)
-
+  Users.push({name:UserData.user,room:UserData.room})
   // getting the event
   socket.on('chat message', (data) => {
     // sending the data to the room
-    io.to(UserData.room).emit('chat message', data);
+    io.to(UserData.room).emit('chat message', [data,UserData.user]);
     console.log(data);
   });
+  io.to(UserData.room).emit("roomData", {
+    room: UserData.room,
+    users: getUsersInRoom(UserData.room)
+  });
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+    Users.splice(Users.indexOf({name:UserData.user , room:UserData.room}),1)
+    io.to(UserData.room).emit("roomData", {
+      room: UserData.room,
+      users: getUsersInRoom(UserData.room)
+    });
+  })
 });
-// listen on port 3000
+
 server.listen(3000,"localhost",()=>{
   console.log("listening on port 3000");
 })
