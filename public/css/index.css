@@ -95,6 +95,11 @@ section ul{
     left: 10px;
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 40%;
+    word-break: break-all;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    bottom:50px;
 }
 section h2{
     color: #ff7b00;
@@ -108,4 +113,23 @@ section form input{
     position: relative;
     top: 100%;
     left: 400px;
+}
+section #message{
+    position: fixed;
+    top:240px;
+    left: 68%;
+    border: black solid 1px;
+    width: 280px;
+    height: 20px;
+    border-radius: 50px;
+    padding: 20px;
+    font-size:17px;
+    word-break: break-all;
+}
+section button{
+    background-color:rgba(255, 255, 255, 0);
+    border: black solid 0px;
+    position: fixed;
+    left:1230px;
+    top:250px;
 }
