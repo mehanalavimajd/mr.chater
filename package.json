@@ -1,4 +1,7 @@
 {
+	"scripts":{
+		"start":"node ./routers/router.js"
+	},
   "main":"./routers/router.js",
   "dependencies": {
     "body-parser": "^1.19.1",
