@@ -11,6 +11,10 @@
 
 </head>
 <body>
+  <% if (user === null) {%>
+    <b>You aren't logged in. please <a href="/login">login</a></b>
+    <% }else{ %>
+
   <nav class="container">
     <div class="row">
       <div class="col-md-12 text-center">
@@ -79,5 +83,6 @@
 
 });
 </script>
-</body> 
+</body>
+<% } %>
 </html>
