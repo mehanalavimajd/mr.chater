@@ -1,6 +1,6 @@
 {
 	"scripts":{
-		"start":"node ./routers/router.js"
+		"start":"node ./routes/router.js"
 	},
   "main":"./routers/router.js",
   "dependencies": {
