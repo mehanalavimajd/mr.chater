@@ -11,8 +11,8 @@
 
 </head>
 <body>
-  <% if (user === null) {%>
-    <b>You aren't logged in. please <a href="/login">login</a></b>
+  <% if (!user) {%>
+    <b style="font-family: arial">You aren't logged in. please <a href="/login">login</a></b>
     <% }else{ %>
 
   <nav class="container">
