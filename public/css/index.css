@@ -34,6 +34,7 @@ aside{
     width: 300px;
     position: fixed;
     left: 0;
+    border-right: #000000 solid 2px;
 }
 aside h2{
     color: #e433c6;
